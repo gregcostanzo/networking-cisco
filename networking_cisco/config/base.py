@@ -17,6 +17,7 @@ from oslo_config import cfg
 from oslo_config import types
 
 
+
 class RemainderOpt(cfg.DictOpt):
 
     """A greedy dictionary option
@@ -59,8 +60,8 @@ class RemainderOpt(cfg.DictOpt):
     def _get_opts_including_deprecated(self, namespace, group_name):
         opts = namespace._conf._get_group(group_name)._opts
         opt_names = list(opts)
-        for name, opt in opts.items():
-            opt_names.extend([x.name for x in opt['opt'].deprecated_opts])
+        for aname, opt in opts.items():
+            opt_names.extend([x.aname for x in opt['opt'].deprecated_opts])
         return opt_names
 
     def _get_from_namespace(self, namespace, group_name):
